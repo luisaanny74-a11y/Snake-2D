@@ -1,4 +1,5 @@
 module Config
+  ROOT_PATH = File.expand_path(__dir__)
 
   # Janela
   WINDOW_WIDTH = 1024
@@ -19,5 +20,9 @@ module Config
 
   # FPS
   FPS = 60
+
+  def self.asset_path(relative_path)
+    File.join(ROOT_PATH, relative_path)
+  end
 
 end

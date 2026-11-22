@@ -1,4 +1,5 @@
 require "gosu"
+require_relative "../config"
 
 class MenuState
 
@@ -61,19 +62,16 @@ class MenuState
     Gosu.draw_rect(
       0,
       0,
-      800,
-      600,
+      Config::WINDOW_WIDTH,
+      Config::WINDOW_HEIGHT,
       Gosu::Color.rgb(25,25,25),
       0
     )
 
-    @title_font.draw_text(
+    draw_centered_text(
       "SNAKE 2D",
-      210,
+      @title_font,
       80,
-      10,
-      1,
-      1,
       Gosu::Color::GREEN
     )
 
@@ -89,13 +87,10 @@ class MenuState
         "▶ " :
         "  "
 
-      @menu_font.draw_text(
+      draw_centered_text(
         prefix + option,
-        285,
+        @menu_font,
         250 + index * 55,
-        10,
-        1,
-        1,
         color
       )
 
@@ -104,6 +99,20 @@ class MenuState
   end
 
   private
+
+  def draw_centered_text(text, font, y, color = Gosu::Color::WHITE)
+    x = (Config::WINDOW_WIDTH - font.text_width(text)) / 2
+
+    font.draw_text(
+      text,
+      x,
+      y,
+      10,
+      1,
+      1,
+      color
+    )
+  end
 
   def execute_option
 

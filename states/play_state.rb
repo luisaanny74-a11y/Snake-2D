@@ -8,8 +8,6 @@ require_relative "../entities/food"
 
 require_relative "../ui/hud"
 
-require_relative "../graphics/sprites"
-
 require_relative "../renderer/snake_renderer"
 
 class PlayState

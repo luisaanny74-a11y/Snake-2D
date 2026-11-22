@@ -1,17 +1,13 @@
-module Assets
+require "gosu"
+require_relative "../config"
 
+module Assets
   @images = {}
 
   class << self
-
     def image(path)
-
-      return @images[path] if @images[path]
-
-      @images[path] = Gosu::Image.new(path)
-
+      absolute_path = Config.asset_path(path)
+      @images[absolute_path] ||= Gosu::Image.new(absolute_path)
     end
-
   end
-
 end

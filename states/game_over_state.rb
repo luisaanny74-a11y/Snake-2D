@@ -1,5 +1,6 @@
 require "gosu"
 require_relative "../services/high_score"
+require_relative "../config"
 
 class GameOverState
 
@@ -40,50 +41,59 @@ end
     Gosu.draw_rect(
       0,
       0,
-      800,
-      600,
+      Config::WINDOW_WIDTH,
+      Config::WINDOW_HEIGHT,
       Gosu::Color.rgb(25,25,25),
       0
     )
 
-    @title_font.draw_text(
+    draw_centered_text(
       "GAME OVER",
-      210,
+      @title_font,
       120,
-      10,
-      1,
-      1,
       Gosu::Color::RED
     )
 
-    @font.draw_text(
+    draw_centered_text(
       "Pontuação: #{@score}",
-      280,
-      240,
-      10
+      @font,
+      240
     )
 
-    @font.draw_text(
-  "Recorde: #{@highscore}",
-  285,
-  285,
-  10
-)
+    draw_centered_text(
+      "Recorde: #{@highscore}",
+      @font,
+      285
+    )
 
-    @font.draw_text(
+    draw_centered_text(
       "ENTER - Jogar novamente",
-      210,
-      360,
-      10
+      @font,
+      360
     )
 
-    @font.draw_text(
+    draw_centered_text(
       "ESC - Sair",
-      295,
-      410,
-      10
+      @font,
+      410
     )
 
+  end
+
+  private
+
+  def draw_centered_text(text, font, y, color = Gosu::Color::WHITE)
+    x = (Config::WINDOW_WIDTH - font.text_width(text)) / 2
+
+    font.draw_text(
+      text,
+      x,
+      y,
+      10,
+      1,
+      1,
+      color
+    )
   end
 
 end
