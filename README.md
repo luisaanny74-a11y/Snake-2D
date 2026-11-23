@@ -1,15 +1,39 @@
 # Snake 2D
 
-Jogo 2D inspirado no clássico Snake, desenvolvido em Ruby com a biblioteca Gosu.
+Snake 2D é um jogo da cobrinha desenvolvido em Ruby com a biblioteca Gosu. O projeto utiliza uma estrutura modular para separar a janela, os estados, as entidades, a interface, os gráficos e a persistência do recorde.
+
+## Capturas de tela
+
+<table>
+  <tr>
+    <th>Menu</th>
+    <th>Jogo</th>
+    <th>Game Over</th>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/menu.png" alt="Tela inicial do jogo" width="320"></td>
+    <td><img src="docs/screenshots/game.png" alt="Partida em andamento" width="320"></td>
+    <td><img src="docs/screenshots/game-over.png" alt="Tela de game over" width="320"></td>
+  </tr>
+</table>
+
+## Funcionalidades
+
+- Menu com opções de jogar, visualizar controles e sair.
+- Movimento da cobra nas quatro direções.
+- Comida gerada aleatoriamente, sem aparecer sobre a cobra.
+- Crescimento da cobra ao coletar comida.
+- Sistema de pontuação.
+- Detecção de colisão com as bordas e com o próprio corpo.
+- Tela de fim de partida.
+- Registro do maior número de pontos em `save/highscore.txt`.
 
 ## Requisitos
 
-- Ruby instalado
-- Biblioteca Gosu
+- Ruby instalado.
+- Biblioteca Gosu.
 
-## Instalação
-
-Instale a dependência Gosu:
+Instale a dependência:
 
 ```bash
 gem install gosu
@@ -25,30 +49,20 @@ ruby main.rb
 
 ## Controles
 
-Durante a partida:
-
-- Seta para cima: movimenta a cobra para cima
-- Seta para baixo: movimenta a cobra para baixo
-- Seta para esquerda: movimenta a cobra para a esquerda
-- Seta para direita: movimenta a cobra para a direita
-
-No menu:
-
-- Seta para cima/baixo: seleciona uma opção
-- Enter: confirma a opção
-
-Na tela de fim de jogo:
-
-- Enter: inicia uma nova partida
-- Esc: encerra o jogo
+| Tecla                        | Ação                                             |
+| ---------------------------- | ------------------------------------------------ |
+| Setas direcionais            | Movimentar a cobra                               |
+| Setas para cima e para baixo | Navegar pelo menu                                |
+| Enter                        | Selecionar uma opção ou iniciar uma nova partida |
+| Esc                          | Sair do jogo                                     |
 
 ## Como jogar
 
-O objetivo é controlar a cobra, coletar as maçãs e aumentar sua pontuação.
+O objetivo é controlar a cobra, coletar as maçãs e aumentar a pontuação.
 
 A cada maçã coletada, a cobra cresce e a pontuação aumenta. A partida termina quando a cobra colide com as bordas do tabuleiro ou com o próprio corpo.
 
-O recorde é armazenado localmente no arquivo `save/highscore.txt`.
+O recorde é armazenado localmente em `save/highscore.txt`.
 
 ## Estrutura do projeto
 
@@ -90,7 +104,7 @@ Snake 2D/
 ## Organização dos arquivos
 
 - `main.rb`: ponto de entrada da aplicação.
-- `game.rb`: inicializa a janela e controla a troca entre os estados do jogo.
+- `game.rb`: inicializa a janela e controla a troca entre os estados.
 - `config.rb`: reúne as configurações da janela, do tabuleiro e da velocidade.
 - `board.rb`: desenha o cenário, a área de jogo e suas bordas.
 - `entities/`: contém as entidades principais, como cobra e comida.
